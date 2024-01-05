@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display Cheat Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+    
+        <h1>CSS: Positioning & Display</h1>
+
+        <p>
+            By default the browser will render elements from left to right, top to bottom. 
+            <br><br>
+            CSS includes properties that change how a browser positions elements.
+        </p>
+
+    </header>
+
+    <main>
+
+        <h1>POSITION</h1>
+
+        <table>
+            <tr>
+                <th style="background-color: dimgray; border-top: none; border-left: none;"></th>
+                <th>Description</th>
+            </tr>
+    
+            <tr>
+                <th scope="row" class="mono">static</th>
+                <td> 
+                    <ul>
+                        <li>This is the default value.</li>
+                        <li>Default width is the full width of the parent element.</li>
+                        <li>Default position is on the left side.</li>
+                        <li>Prevents other elements from appearing in the same horizontal space.</li>
+                    </ul>
+                </td>            
+            </tr>
+    
+            <tr>
+                <th scope="row" class="mono">relative</th>
+                <td>
+                    <ul>
+                        <li>Positions an element relative to its default position.</li>
+                        <li>Used with offset properties.</li>
+                        <li>Specify how the element should be moved, relative to its default position.</li>
+                    </ul> 
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" class="mono">absolute</th>
+                <td>
+                    <ul>
+                        <li>Used to displace an element from its static position, (top left of its container).</li>
+                        <li>When offset properties are set, these will be relative to the top left corner of the page, not the container.</li>
+                        <li>All other elements on the page will ignore the element and act like it is not present. </li>                  
+                    </ul>            
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" class="mono">fixed</th>
+                <td>
+                    <ul>
+                        <li>Fixes an element to a specific position on the page. </li>
+                        <li>Used with offset properties.</li>
+                        <li>Often used for navigation bars.</li>
+                    </ul>            
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" class="mono">sticky</th>
+                <td>
+                    <ul>
+                        <li>Scrolls with user but sticks to specified position.</li>
+                        <li>Used with offset properties.</li>
+                    </ul>            
+                    <p>
+                        The element will remain in its relative position, and scroll as usual.
+                        <br><br>
+                        When it reaches the specified position it will stick to that position <br>
+                        until it reaches the bottom of its parent container where it<br>
+                        will “unstick” and rejoin the flow of the document.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" class="mono">z-index</th>
+                <td>
+                    <p>When boxes have a combination of different positions they can overlap.</p>
+                    <ul>                        
+                        <li>z-index controls how far back or forward an element should appear when elements overlap.</li>       
+                        <li>Accepts integer values, which define the order in which elements should be layered.</li>
+                        <li>Does not work on static elements. </li>
+                    </ul>            
+                </td>
+            </tr>
+        </table>
+    
+       
+           
+        <br><br>         
+        
+        <table>
+            <h2>Offset Properties</h2>
+            
+            <tr>
+                <th>Move From:</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <th scope="row" class="mono">top</th>
+                <td>Moves the element down from the top. </td>        
+            </tr>
+            <tr>
+                <th scope="row" class="mono">bottom</th>
+                <td>Moves the element up from the bottom.</td>
+            </tr>
+            <tr>
+                <th scope="row" class="mono">left</th>
+                <td>Moves the element away from the left side (to the right).</td>
+            </tr>
+            <tr>
+                <th scope="row" class="mono">right</th>
+                <td>Moves the element away from the right side (to the left).</td>
+            </tr>
+
+        </table>
+
+    <br><br>
+    
+        <ul id="offsetfooter">
+            <li>Values can be in pixels, ems, or percentages, amoung others.</li>
+            <li>Offset properties will not work if the position is default static.</li>
+            <li>Offsetting the relative element will not affect the positioning of other elements.</li>
+        </ul>
+
+        <br><br>
+
+        <hr>
+
+        <h1>Examples</h1>
+        
+        <hr>
+
+        <h3>1: position:static</h3>
+
+        <div class="box" id="p1">
+            This is a block-level element with default position.
+            <br><br>
+            <strong class="mono">position: static</strong>  (does not need to be set)                
+        </div>   
+    
+        <hr>
+    
+        <h3>2: position: relative</h3>
+
+ 
+        <div class="box" id="relative">
+            <strong class="mono">position: relative;<br>
+            left: 50px;</strong>
+            <br><br>
+            Positioning the element relative to its default static position.
+        </div>    
+
+        <hr>
+    
+        <h3>3: absolute</h3>
+    
+        <div class="box" id="absolute">
+            <strong class="mono">position: absolute;<br>
+            right: 200px;</strong>
+            <br><br>
+            All other elements on the page ignore this. 
+        </div>         
+
+       <div style="height: 200px;"></div>
+
+        <hr>
+   
+        <h3>4: Fixed</h3>
+
+        <div class="box" id="fixed">
+            <strong class="mono">position: fixed; <br>
+            top: 0px;<br>
+            right: 0px;</strong>
+            <br><br>
+            Fix an element to a specific position on the page (regardless of user scrolling).
+        </div>      
+
+            (see displaced box top right of screen)
+            <br><br>
+        <hr>
+
+   <div> <!-- sticky's parent container -->
+
+        <h3>5: Sticky</h3>
+
+        <div class="box" id="sticky">
+            <strong class="mono">position: sticky; <br>
+            top: 200px;</strong><br>
+            <br>
+            Keeps an element in the document flow as the user scrolls, but sticks to a specified position 
+            as the page is scrolled further. 
+        </div>      
+
+   
+    
+        <hr>
+
+        <h3>Z-Index</h3>
+
+        <div class="box" id="z1">
+            <strong class="mono">position: relative;<br>
+            left: 50px;<br>
+            z-index: 1;</strong>
+            <br><br>
+            z-index: 1  moves this box forward 
+        </div>    
+
+    </div>  <!--end of sticky's parent container-->
+
+        <div class="box" id="z2">
+            <strong class="mono">position: relative;<br>
+            left: 250px;<br>
+            top: 100px;</strong>
+            <br><br>
+            with no z-index set, default is zero. 
+        </div>
+
+    
+    <hr>
+
+    <br><br>
+
+
+    <div class="display">
+        <h1 style="border-top: black;">Display</h1>
+        <p>
+            Every HTML element has a default display value that dictates if it can share horizontal space with other elements.<br>
+            <br>
+            Some elements fill the entire browser from left to right, regardless of the size of their content.
+            <br><br>
+            Other elements only take up as much horizontal space as their content requires and can be directly next to other elements.
+        </p>
+        
+    </div>
+    <div class="display">
+        <h3>display: inline</h3>
+    
+        <p>
+            Inline is the default display for some elements, such as 'em', 'strong' or 'a' elements. 
+            <br><br>
+            Inline elements have a box that wraps tightly around their content, only taking up the amount of space necessary to display their content<br>
+            and not requiring a new 
+            line after each element. <br>
+            <br>
+            These elements cannot be altered in size with the height or width CSS properties.<br>
+            <br>
+            You can use this property to make any element an inline element.             
+        </p>
+    <br>
+        <h2 class = "inline">This is an h2 element</h2> <p class = "inline">this is a paragraph element</p>
+    
+    </div>
+    
+    <div class="display">
+        <h3>display: block</h3>
+        <p>
+            Block-level elements are not displayed in the same line as the content around them, and fill the entire width of the page
+            by default.<br>
+            <br>
+            However, their width property can be set.<br>
+            <br>
+            Unless otherwise specified, they are the height necessary to accommodate their content.<br><br>
+    
+            Elements that are block-level by default include all heading elements, paragraph, div and footer elements.<br>
+            <br>
+    
+            <span class="block">The strong element here  <strong>This is strong</strong> is on its own line as it has its 
+                display property set to block.</span>
+        </p>
+    </div>
+
+           
+    <div class="display">    
+        <h3>display: inline-block</h3>
+        <p>
+            Inline-block elements can appear next to each other and we can specify their dimensions using the width and height properties. 
+            <br><br>
+            Images are the best example of default inline-block elements.
+            <br><br>
+            For example, the 'div's below will be displayed on the same line but with the specified dimensions:
+        </p>
+                <div class="rectangle">
+                <p>I’m a rectangle!</p>
+                </div>
+                <div class="rectangle" style="height:75px;">
+                <p>So am I!</p>
+                </div>
+                <div class="rectangle">
+                <p>Me three!</p>
+                </div>
+    
+    </div>
+
+
+    <div class ="display">
+    
+        <div class="box" id="float">
+            <strong>float: right;</strong><br>
+            <br>
+            moves as far right as possible, in its container 
+        </div>  
+
+        <div style="padding-right: 200px;">
+            <h3>float: left</h3>
+            <p>
+                Used to move an element as far left or as far right as possible in the container.<br>
+                <br>            
+                Commonly used for wrapping text around an image.<br>
+                <br><br>
+            
+                    This works for static and relative positioned elements.<br>
+                <br>
+                Floated elements must have a width specified. Otherwise, the element will assume the full width of its 
+                containing element.
+                <br><br>
+                <span style="color:black;">
+                <br>
+                (However, moving elements left or right for layout purposes is better suited for tools like CSS grid and flexbox.)
+                <br><br>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="display">
+        <h3>clear: left</h3>
+        <p>
+            The float property can also be used to float multiple elements at once.
+            <br> 
+            However, when multiple floated elements have different 
+            heights, it can affect their layout on the page. 
+            <br>
+            Specifically, elements can “bump” into each other and not allow other elements 
+            to properly move to the left or right.<br>
+            <br>            
+            The clear property specifies how elements should behave when they bump into each other on the page. 
+            <br><br>
+            It can take on one of the following values:
+        </p> 
+    
+            <table>
+                <tr>
+                    <td class="mono">left</td>
+                    <td>The left side of the element will not touch any other element within the same containing element.</td>
+                </tr>
+                <tr>
+                    <td class="mono">right</td>
+                    <td>The right side of the element will not touch any other element within the same containing element.</td>
+                </tr>
+                <tr>
+                    <td class="mono">both</td>
+                    <td>Neither side of the element will touch any other element within the same containing element.</td>
+                </tr>
+                <tr>
+                    <td class="mono">none</td>
+                    <td>The element can touch either side.</td>
+                </tr>
+            </table>
+                   
+        <br>
+             
+        <p>            
+            For example, if all divs on a page are floated to the left side. 
+            <br>An element with class 'special' may not move all the 
+            way to the left because a taller div blocked its positioning.
+            <br> Then by setting its clear property to left, the special div will 
+            be moved all the way to the left side of the page.
+        </p>   
+    
+    
+    </div>
+    </main>
+         
+        
+    
+
+
+
+
+    
+</body>
+</html>
